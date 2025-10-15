@@ -8,26 +8,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea"; // Import Textarea
-import { Mail, Phone, MapPin } from "lucide-react"; // Import ikon
+import { Mail, Phone, MapPin, MessageSquare } from "lucide-react"; // Import ikon MessageSquare untuk WhatsApp
 
 export default function KontakPage() {
+  const whatsAppNumber = "6282241130725"; // Format: 62... (tanpa + atau 0 di depan)
+  const whatsAppLink = `https://wa.me/${whatsAppNumber}`;
+
   return (
-    // Section pembungkus untuk menengahkan Card
     <section className="flex justify-center">
-      {/* Card ini berfungsi sebagai 'outline' untuk seluruh konten */}
       <Card className="w-full max-w-4xl">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl">Hubungi Kami</CardTitle>
           <CardDescription>
-            Punya pertanyaan atau butuh informasi lebih lanjut? Silakan isi form di bawah atau hubungi kami langsung.
+            Punya pertanyaan atau butuh informasi lebih lanjut? Hubungi kami langsung melalui kontak di bawah ini.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Kolom Kiri: Informasi Kontak dengan Ikon */}
+            {/* Kolom Kiri: Informasi Kontak (Tetap Sama) */}
             <div className="space-y-6">
               <h3 className="text-xl font-semibold">Informasi Langsung</h3>
               <div className="flex items-start gap-4">
@@ -43,7 +41,7 @@ export default function KontakPage() {
                 <Phone className="h-5 w-5 text-primary" />
                 <div>
                   <p className="font-semibold">Telepon</p>
-                  <p className="text-muted-foreground">(021) 123-4567</p>
+                  <p className="text-muted-foreground">082241130725</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -55,28 +53,22 @@ export default function KontakPage() {
               </div>
             </div>
 
-            {/* Kolom Kanan: Formulir Kontak */}
-            <form className="space-y-4">
-              <div>
-                <Label htmlFor="name">Nama</Label>
-                <Input id="name" type="text" placeholder="Nama Lengkap Anda" />
-              </div>
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="email@anda.com" />
-              </div>
-              <div>
-                <Label htmlFor="message">Pesan Anda</Label>
-                <Textarea
-                  id="message"
-                  rows={5}
-                  placeholder="Tuliskan pertanyaan atau pesan Anda di sini..."
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Kirim Pesan
+            {/* ====================================================== */}
+            {/* Kolom Kanan: Diubah Menjadi Tombol WhatsApp */}
+            {/* ====================================================== */}
+            <div className="flex flex-col justify-center items-center text-center space-y-4 p-4 border rounded-lg">
+              <h3 className="text-xl font-semibold">Punya Pertanyaan Cepat?</h3>
+              <p className="text-muted-foreground">
+                Klik tombol di bawah untuk langsung memulai percakapan dengan kami melalui WhatsApp.
+              </p>
+              <Button asChild size="lg" className="w-full">
+                <a href={whatsAppLink} target="_blank" rel="noopener noreferrer">
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  Chat via WhatsApp
+                </a>
               </Button>
-            </form>
+            </div>
+            
           </div>
         </CardContent>
         <CardFooter className="flex justify-center">

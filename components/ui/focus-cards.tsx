@@ -1,3 +1,4 @@
+// components/ui/focus-cards.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -26,7 +27,7 @@ export const Card = React.memo(
       <img
         src={card.src}
         alt={card.title}
-        className="object-cover absolute inset-0"
+        className="object-cover absolute inset-0 w-full h-full" // Ditambahkan w-full h-full untuk memastikan gambar mengisi
       />
       <div
         className={cn(

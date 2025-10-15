@@ -1,13 +1,14 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local"; // <-- 1. Ganti import menjadi 'next/font/local'
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
-import MainLayout from "@/components/MainLayout"; // <-- Import MainLayout
+import MainLayout from "@/components/MainLayout";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+// 2. Konfigurasi untuk memuat font dari file lokal
+const fontSans = localFont({
+  src: "../fonts/Inter-Regular.ttf", // <-- Path menuju file font Anda
   variable: "--font-sans",
 });
 
@@ -29,7 +30,6 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {/* Panggil MainLayout di sini */}
         <MainLayout>{children}</MainLayout>
       </body>
     </html>

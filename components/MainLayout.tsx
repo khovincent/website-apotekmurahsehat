@@ -34,21 +34,10 @@ export default function MainLayout({
       )}
     >
       <Navbar transparent={isHomePage} />
-
-      {/* =================================================================== */}
-      {/* INI ADALAH KUNCI PERBAIKANNYA */}
-      {/* Tambahkan padding kanan-kiri & atas-bawah HANYA jika BUKAN homepage. */}
-      {/* =================================================================== */}
-      <main
-        className={cn(
-          "flex-grow flex flex-col",
-          !isHomePage && "px-8 md:px-16 py-12"
-        )}
-      >
-        {children}
-      </main>
-
+      <main className="flex-grow flex flex-col">{children}</main>
       <Footer transparent={isHomePage} />
+      
+      {/* Chatbot diletakkan di sini, tanpa provider */}
     </div>
   );
 }
