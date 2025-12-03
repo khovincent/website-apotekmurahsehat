@@ -85,7 +85,7 @@ export default function Home() {
                     Lihat Katalog Obat <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/lokasi">
+                <Link href="/map">
                   <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2 rounded-full border-slate-300 dark:border-slate-700">
                     <MapPin className="h-4 w-4" /> Cek Lokasi
                   </Button>
