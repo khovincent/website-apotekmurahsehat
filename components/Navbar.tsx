@@ -17,9 +17,9 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Obat", href: "/obat" },
-    { name: "Cek BMI", href: "/kalkulator" },
+    { name: "Cek BMI", href: "/BMI" },
     { name: "Kontak", href: "/kontak" },
-    { name: "Lokasi", href: "/lokasi" },
+    { name: "Lokasi", href: "/map" },
   ];
 
   return (
