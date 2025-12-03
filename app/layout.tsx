@@ -1,20 +1,25 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import localFont from "next/font/local"; // <-- 1. Ganti import menjadi 'next/font/local'
+import localFont from "next/font/local";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
 import MainLayout from "@/components/MainLayout";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
-// 2. Konfigurasi untuk memuat font dari file lokal
+// Konfigurasi font dari file lokal
 const fontSans = localFont({
-  src: "../fonts/Inter-Regular.ttf", // <-- Path menuju file font Anda
+  src: "../fonts/Inter-Regular.ttf", // Pastikan file ini ada di folder public/fonts atau folder fonts root
   variable: "--font-sans",
 });
 
-export const metadata = {
-  title: "Apotek Murah Sehat",
-  description: "Solusi kesehatan terpercaya Anda",
+export const metadata: Metadata = {
+  title: "Apotek Murah Sehat - Solusi Kesehatan Keluarga",
+  description: "Apotek terlengkap dan terpercaya di Yogyakarta.",
+  icons: {
+    icon: "/image.svg", 
+    shortcut: "/image.png",
+    apple: "/image.png", 
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -31,6 +36,9 @@ export default function RootLayout({
         )}
       >
         <MainLayout>{children}</MainLayout>
+        
+        {/* Tombol WA Mengambang (Sangat penting untuk Mobile) */}
+        <WhatsAppFloat /> 
       </body>
     </html>
   );

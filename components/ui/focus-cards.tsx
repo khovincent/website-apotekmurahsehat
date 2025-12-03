@@ -1,8 +1,14 @@
-// components/ui/focus-cards.tsx
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image"; // Import Image Next.js
 import { cn } from "@/lib/utils";
+
+// Definisikan tipe Card di sini agar bisa dipakai ulang
+type Card = {
+  title: string;
+  src: string;
+};
 
 export const Card = React.memo(
   ({
@@ -11,7 +17,7 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: Card; // PERBAIKAN: Ganti 'any' dengan tipe 'Card'
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -24,10 +30,13 @@ export const Card = React.memo(
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
     >
-      <img
+      {/* PERBAIKAN: Menggunakan Image Next.js dengan fill */}
+      <Image
         src={card.src}
         alt={card.title}
-        className="object-cover absolute inset-0 w-full h-full" // Ditambahkan w-full h-full untuk memastikan gambar mengisi
+        fill
+        className="object-cover absolute inset-0"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
       <div
         className={cn(
@@ -44,11 +53,6 @@ export const Card = React.memo(
 );
 
 Card.displayName = "Card";
-
-type Card = {
-  title: string;
-  src: string;
-};
 
 export function FocusCards({ cards }: { cards: Card[] }) {
   const [hovered, setHovered] = useState<number | null>(null);

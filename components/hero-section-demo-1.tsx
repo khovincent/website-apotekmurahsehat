@@ -1,12 +1,14 @@
 "use client";
 
-
-import { motion } from "motion/react";
+import { motion } from "framer-motion"; // Pastikan import dari framer-motion (bukan motion/react jika belum install khusus)
+import Image from "next/image"; // Import Image Next.js
 
 export default function HeroSectionOne() {
   return (
     <div className="relative mx-auto my-10 flex max-w-7xl flex-col items-center justify-center">
-      <Navbar />
+      {/* Navbar lokal di file ini */}
+      <LocalNavbar /> 
+      
       <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
         <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
       </div>
@@ -37,16 +39,9 @@ export default function HeroSectionOne() {
             ))}
         </h1>
         <motion.p
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 0.8,
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.8 }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
           With AI, you can launch your website in hours, not days. Try our best
@@ -54,16 +49,9 @@ export default function HeroSectionOne() {
           up.
         </motion.p>
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1,
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 1 }}
           className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
         >
           <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
@@ -74,27 +62,19 @@ export default function HeroSectionOne() {
           </button>
         </motion.div>
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1.2,
-          }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 1.2 }}
           className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
-          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
-            <img
+          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700 relative aspect-[16/9]">
+            {/* PERBAIKAN: Menggunakan Image dari Next.js */}
+            <Image
               src="https://assets.aceternity.com/pro/aceternity-landing.webp"
               alt="Landing page preview"
-              className="aspect-[16/9] h-auto w-full object-cover"
-              height={1000}
-              width={1000}
+              fill
+              className="object-cover"
+              unoptimized // Agar tidak error domain config
             />
           </div>
         </motion.div>
@@ -103,7 +83,8 @@ export default function HeroSectionOne() {
   );
 }
 
-const Navbar = () => {
+// Saya rename jadi LocalNavbar agar tidak bentrok dengan komponen Navbar utama Anda
+const LocalNavbar = () => {
   return (
     <nav className="flex w-full items-center justify-between border-t border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
       <div className="flex items-center gap-2">
